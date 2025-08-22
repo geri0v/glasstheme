@@ -2,63 +2,73 @@
 /* author: [Geri0V] */
 :root {
   --background-glass: rgba(255, 255, 255, 0.01);
-  --icon-glow-color: rgba(0, 150, 255, 0.7);
-  --text-color: rgba(255, 255, 255, 0.85);
+  --icon-glow-color: rgba(255, 255, 255, 0.8); /* witte glow */
+  --text-glow-color: rgba(255, 255, 255, 0.9);
   --blur-strength: 15px;
 }
 
-/* Basis Aero Glass effect voor tiles */
+/* Aero Glass achtergrond voor tiles */
 #app div.groove-home-inner-tile {
   border-radius: 10px;
   background: var(--background-glass) !important;
   backdrop-filter: saturate(1.5) blur(var(--blur-strength));
-  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: visible;
-  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Houd tile structuur intact en centreer icon + tekst */
+/* Zorg dat tile container column is, content gecentreerd */
 #app div.groove-home-tile {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  text-align: center;
 }
 
-/* Icon met glow - behoud originele grootte en centrering */
+/* Iconen met witte glow en lichte outline */
 #app div.groove-home-tile p.groove-home-tile-icon {
-  filter: drop-shadow(0 0 8px var(--icon-glow-color));
-  margin: 0 auto 6px auto; /* margin onder voor text spacing */
+  filter:
+    drop-shadow(0 0 8px var(--icon-glow-color))
+    drop-shadow(0 0 4px var(--icon-glow-color));
+  margin: 0 auto 8px auto; /* ruimte onder icon voor tekst */
+  width: 64px;
+  height: 64px;
+  color: white !important;
   user-select: none;
 }
 
-/* Tekst netjes onder icon, gecentreerd */
+/* Tekst wit met glow */
 #app div.groove-home-tile p.groove-home-tile-title {
-  text-align: center;
-  color: var(--text-color);
-  font-weight: 500;
+  color: white !important;
+  font-weight: 600;
   font-size: 14px;
   margin: 0;
   user-select: none;
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  text-shadow:
+    0 0 6px var(--text-glow-color),
+    0 0 10px var(--text-glow-color);
 }
 
-/* Transparante en glass effect voor het hoofdmenu */
+/* Transparante, glass effect voor app menu */
 #app div.groove-app-menu {
   background: transparent !important;
   backdrop-filter: saturate(1.5) blur(var(--blur-strength));
   box-shadow: 0 0 8px var(--icon-glow-color);
   border-radius: 10px;
-  color: var(--text-color);
+  color: white;
   padding: 10px 20px;
 }
 
-/* Zoekveld stijl met glass en glow */
+/* Zoekveld met glas en glow effect */
 #app input.app-list-search {
   background: rgba(255, 255, 255, 0.01) !important;
   box-shadow: inset 0 0 8px var(--icon-glow-color) !important;
-  color: var(--text-color);
+  color: white;
   border-radius: 8px;
   border: none;
   padding: 8px 12px;
@@ -67,19 +77,18 @@
 }
 
 #app input.app-list-search::placeholder {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 #app input.app-list-search:focus {
-  box-shadow: inset 0 0 12px var(--icon-glow-color) !important;
+  box-shadow: inset 0 0 14px var(--icon-glow-color) !important;
   outline: none;
   color: white;
 }
 
-/* Niet-actieve tegels minimaliseren met transparantie */
+/* Niet-actieve tegels verminderen zichtbaar */
 #app div.groove-home-tile:not(.t_active) div.groove-home-inner-tile {
   background: rgba(255, 255, 255, 0.005) !important;
   backdrop-filter: none !important;
   box-shadow: none !important;
 }
-

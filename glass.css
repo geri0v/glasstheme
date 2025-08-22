@@ -2,29 +2,31 @@
 /* author: [Geri0V] */
 /* Root variabelen voor kleuren en effecten */
 :root {
-  --background-glass: rgba(0, 0, 0, 0.01); /* 99% transparant zwart */
-  --glow-color: rgba(180, 210, 255, 0.8);
-  --blur-strength: 20px;
+  --background-tile-dark: rgba(20, 20, 20, 0.12); /* iets donkerder en duidelijker */
+  --glow-color: rgba(100, 150, 255, 0.8); /* zachte blauwe glow */
+  --blur-strength: 18px;
   --text-color: white;
-  --icon-filter: invert(1) brightness(2) drop-shadow(0 0 8px var(--glow-color));
-  --border-radius: 5px;
+  --icon-filter: invert(1) brightness(2) drop-shadow(0 0 6px var(--glow-color));
+  --border-radius: 6px;
 }
 
-/* Tegels met bijna transparante glazen achtergrond en blur */
+/* Tegels: donker glas met blur en glow, transparant maar zichtbaar */
 #app div.groove-home-inner-tile {
   border-radius: var(--border-radius);
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), /* subtiele donkere tint */
-    rgba(0, 0, 0, 0.05); /* lichte transparante basis */
+  background: var(--background-tile-dark);
   backdrop-filter: saturate(1.3) blur(var(--blur-strength));
   box-shadow:
-    0 0 12px var(--glow-color),
-    inset 0 0 5px rgba(180, 210, 255, 0.1);
+    0 0 10px var(--glow-color),
+    inset 0 0 8px rgba(100, 150, 255, 0.12);
   position: relative;
   overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Centraal en netjes uitlijnen van tile content */
+/* Uitlijning binnen tegels */
 #app div.groove-home-tile {
   display: flex !important;
   flex-direction: column !important;
@@ -34,7 +36,7 @@
   text-align: center;
 }
 
-/* Iconen met glow en helderheid */
+/* Iconen wit maken met glow voor zichtbaarheid */
 #app div.groove-home-tile p.groove-home-tile-icon,
 #app div.groove-home-tile p.groove-home-tile-icon img,
 #app div.groove-home-tile p.groove-home-tile-icon svg {
@@ -46,7 +48,7 @@
   display: block;
 }
 
-/* Tekst met goede zichtbaarheid en zachte glow */
+/* Titeltekst goed zichtbaar met glow */
 #app div.groove-home-tile p.groove-home-tile-title {
   color: var(--text-color) !important;
   font-weight: 500;
@@ -59,17 +61,17 @@
   line-height: 1.2;
 }
 
-/* Menu met donkere glas look */
+/* App menu: donker glas met blur en glow */
 #app div.groove-app-menu {
-  background: linear-gradient(rgba(40, 40, 40, 0.9), rgba(40, 40, 40, 0.9));
+  background: rgba(30, 30, 30, 0.8);
+  backdrop-filter: saturate(1.3) blur(var(--blur-strength));
   box-shadow: 0 0 8px var(--glow-color);
   border-radius: var(--border-radius);
   color: var(--text-color);
   padding: 10px 20px;
-  backdrop-filter: saturate(1.3) blur(var(--blur-strength));
 }
 
-/* Zoekveld met donkere achtergrond en glow */
+/* Zoekveld: donkere semi-transparante achtergrond en glow */
 #app input.app-list-search {
   background: rgba(255, 255, 255, 0.1) !important;
   box-shadow: inset 0 0 8px var(--glow-color) !important;
@@ -91,13 +93,11 @@
   color: var(--text-color);
 }
 
-/* Dim niet-actieve tegels */
+/* Niet actieve tegels dimmen zachtjes */
 #app div.groove-home-tile:not(.t_active) div.groove-home-inner-tile {
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.10)),
-    var(--background-glass);
+  background: rgba(20, 20, 20, 0.06) !important;
   backdrop-filter: none !important;
   box-shadow: none !important;
-  filter: grayscale(0.8) brightness(0.6);
+  filter: grayscale(0.8) brightness(0.55);
   transition: filter 0.3s ease;
 }

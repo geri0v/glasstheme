@@ -2,109 +2,206 @@
 /* author: [Geri0V] */
 
 :root {
-  --flow-rotate-scale: 0;
-  --glow-orb: transparent;
-  --metro-background: transparent;
+  --flow-rotate-scale: 0 !important;
+  --glow-orb: transparent !important;
+  --metro-background: transparent !important;
+
+  /* Glas-tuning */
+  --aero-blur: 2px;
+  --aero-sat: 0.85;   /* verlaagde saturatie voorkomt accent-boost */
+  --aero-bright: 1.0; /* geen extra brightening */
+  --aero-contrast: 0.98;
+
+  /* Neutrale micro-overlay (dark) */
+  --aero-bg-dark: rgba(255, 255, 255, 0.02);
+  /* Neutrale micro-overlay (light) */
+  --aero-bg-light: rgba(255, 255, 255, 0.03);
 }
 
-/* Algemene Aero‑look */
-#aapp div.groove-home-inner-tile,
-#app div.groove-app-menu,
-#app input.app-list-search,
-#app.light-mode div.groove-home-inner-tile,
-#app.light-mode div.groove-app-menu {
-  background: rgba(255, 255, 255, 0.01);
-  backdrop-filter: saturate(1.8) blur(2px);
-  -webkit-backdrop-filter: saturate(1.8) blur(2px);
-  outline: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.08);
-  position: relative;
+/* ===== Universele helpers om kleur-bleed te voorkomen ===== */
+.aero-reset {
+  mix-blend-mode: normal !important;
+  isolation: isolate !important;
+  background-image: none !important;
+  filter: none !important;
 }
-#aapp div.groove-home-inner-tile::after,
-#app div.groove-app-menu::after {
+
+/* ===== Home slider & achtergronden ===== */
+#app #main-home-slider div.slide-page-home.wallpaper-behind {
+  background: transparent !important;
+  background-size: cover !important;
+  transition: opacity calc(.5s * var(--animation-duration-scale));
+  backdrop-filter: none !important;
+}
+
+/* ===== Tile list pagina – accent-gradients uit ===== */
+#app div.slide-page-home.wallpaper-behind div.tile-list-page {
+  max-width: none;
+  box-shadow: none !important;
+  background: transparent !important;
+  mix-blend-mode: normal !important;
+}
+#app div.slide-page-home.wallpaper-behind div.tile-list-page:not(.home-menu-back) {
+  background: transparent !important;
+}
+#app div.slide-page-home.wallpaper-behind div.tile-list-page.home-menu-back,
+#app div.slide-page-home.wallpaper-behind div.tile-list-page.home-menu-back-intro {
+  background: transparent !important;
+}
+
+/* ===== Tiles ===== */
+#app div.groove-home-tile { --shake-x: 0px !important; --shake-y: 0px !important; }
+
+#app div.groove-home-inner-tile {
+  position: relative;
+  background: var(--aero-bg-dark) !important; /* 2% wit: breekt 002D63 net genoeg */
+  backdrop-filter: saturate(var(--aero-sat)) brightness(var(--aero-bright)) contrast(var(--aero-contrast)) blur(var(--aero-blur)) !important;
+  -webkit-backdrop-filter: saturate(var(--aero-sat)) brightness(var(--aero-bright)) contrast(var(--aero-contrast)) blur(var(--aero-blur)) !important;
+  border-radius: 5px;
+  outline: 1px solid rgba(255, 255, 255, 0.20) !important;
+  box-shadow: inset 0 0 12px 1px rgba(255, 255, 255, 0.08) !important;
+}
+#app div.groove-home-inner-tile::after {
+  /* subtiele Aero-glimlaag */
   content: "";
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0.05) 40%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(to bottom, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0) 100%);
+}
+#app div.groove-home-inner-tile,
+#app div.groove-home-inner-tile > * { /* isolatie tegen accentkleur */
+  composes: aero-reset;
 }
 
-/* Tiles */
-#app div.groove-home-inner-tile {
-  border-radius: 5px;
-  padding: 10px;
-  display: flex; justify-content: center; align-items: center;
+#app div.groove-app-tile-icon,
+#app div.groove-letter-tile p.groove-app-tile-icon {
+  margin: 0 auto;
+  display: block;
+  max-width: 48px; max-height: 48px;
+  filter: none !important;
 }
+
 #app div.groove-home-tile p.groove-home-tile-title {
   margin-top: 6px;
-  color: white;
-  font-size: 14px;
-  font-weight: 500;
   text-align: center;
+  color: #FFFFFF !important;   /* forceer wit in dark */
+  width: 100%;
+  font-weight: 500;
+  font-size: 14px;
 }
 
-/* Menu – rechts uitlijnen */
+/* ===== Menu – rechts uitgelijnd + accent-neutraal ===== */
 #app div.groove-app-menu {
-  border-radius: 12px;
-  position: fixed;
-  top: calc(var(--window-inset-top, 0px));
-  right: 20px;
-  left: auto;
-  max-width: 320px;
+  position: fixed !important;
+  top: calc(var(--window-inset-top, 0px)) !important;
+  right: 20px !important; left: auto !important;
+  max-width: 320px !important;
+  z-index: 9999 !important;
   padding: 12px 16px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(60px, auto);
-  gap: 10px;
-  justify-items: center;
-  z-index: 9999;
+  border-radius: 12px;
+
+  background: var(--aero-bg-dark) !important;
+  backdrop-filter: saturate(var(--aero-sat)) brightness(var(--aero-bright)) contrast(var(--aero-contrast)) blur(var(--aero-blur)) !important;
+  -webkit-backdrop-filter: saturate(var(--aero-sat)) brightness(var(--aero-bright)) contrast(var(--aero-contrast)) blur(var(--aero-blur)) !important;
+  outline: 1px solid rgba(255, 255, 255, 0.20) !important;
+  box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.06) !important;
+
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  grid-auto-rows: minmax(60px, auto) !important;
+  gap: 10px !important;
+  justify-items: center !important;
+
+  composes: aero-reset;
 }
+#app div.groove-app-menu::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0) 100%);
+}
+
 #app div.groove-app-menu div.groove-app-menu-entry {
-  background: transparent;
+  background: transparent !important;
+  box-shadow: none !important;
   border-radius: 8px;
   padding: 6px 8px;
-  display: flex; flex-direction: column; align-items: center;
-  cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  cursor: pointer; user-select: none;
   transition: background-color 0.2s ease;
-}
-#app div.groove-app-menu div.groove-app-menu-entry:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-#app div.groove-app-menu div.groove-app-menu-entry.t_active {
-  background-color: rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  color: #FFFFFF !important; /* forceer wit i.p.v. accent */
 }
 #app div.groove-app-menu div.groove-app-menu-entry p {
-  margin-top: 6px;
+  margin: 6px 0 0 0;
   font-size: 11px;
-  text-align: center;
-  white-space: nowrap; overflow: hidden;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  width: 100%;
+  color: inherit !important;
 }
-#app div.groove-app-menu div.groove-app-menu-entry svg,
+#app div.groove-app-menu div.groove-app-menu-entry svg {
+  width: 28px !important; height: 28px !important;
+  fill: currentColor !important; /* laat iconen wit worden */
+  stroke: currentColor !important;
+}
 #app div.groove-app-menu div.groove-app-menu-entry img {
-  width: 28px; height: 28px;
+  width: 28px !important; height: 28px !important;
+  filter: none !important;
+}
+#app div.groove-app-menu div.groove-app-menu-entry:hover {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+#app div.groove-app-menu div.groove-app-menu-entry.t_active {
+  box-shadow: inset 0 0 3px 2px rgba(255, 255, 255, 0.20) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Zoekveld */
+/* ===== Zoekveld ===== */
 #app input.app-list-search {
   border-radius: 5px;
-  background: white;
-  box-shadow: inset 0 0 0 2px #c6c6c6, inset 0 0 3px 3px #c3c3c3;
-}
-#app input.app-list-search:focus {
-  box-shadow: inset 0 0 0 2px #4B88B6, inset 0 0 3px 3px #3CD6FD;
+  background: #FFFFFF !important;
+  color: #0A0A0A !important;
+  box-shadow: inset 0 0 0 2px #c6c6c6, inset 0 0 3px 3px #c3c3c3 !important;
 }
 
-/* Light mode varianten */
+/* ===== App icon banner en knoppen: geen accent-glow ===== */
+#app div.app-page-icon-banner { background: transparent !important; pointer-events: none !important; }
+#app #app-page-icon,
+#app #search-icon,
+#app div.groove-tile-menu-button {
+  pointer-events: all;
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+#app #app-page-icon.t_active,
+#app #search-icon.t_active,
+#app div.groove-tile-menu-button.t_active { filter: brightness(1.15) !important; }
+
+/* ===== Light mode aanpassingen (iets helderder glas) ===== */
 #app.light-mode div.groove-home-inner-tile,
 #app.light-mode div.groove-app-menu {
-  background: rgba(255, 255, 255, 0.02);
-  outline: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.05);
-  color: black;
+  background: var(--aero-bg-light) !important; /* 3% wit */
+  outline: 1px solid rgba(0, 0, 0, 0.15) !important;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.05) !important;
+  color: #0A0A0A !important;
+}
+#app.light-mode div.groove-app-menu div.groove-app-menu-entry {
+  color: #0A0A0A !important; /* donkere tekst in licht thema */
+}
+#app.light-mode div.groove-home-inner-tile::after,
+#app.light-mode div.groove-app-menu::after {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.07) 40%, rgba(255,255,255,0) 100%);
+}
+
+/* ===== Veiligheidsnet: blokkeer accent-achtergronden/gradients expliciet ===== */
+#app [style*="--accent-color"],
+#app [class*="accent"],
+#app [class*="gradient"],
+#app [class*="glow"] {
+  background-image: none !important;
+  box-shadow: none !important;
+  mix-blend-mode: normal !important;
+}

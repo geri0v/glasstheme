@@ -1,77 +1,124 @@
 /* Full Glass Aero Theme zonder blur voor Groove Launcher */
-/* Volledig transparant, zichtbare iconen en teksten, zachte outline */
+/* Transparant met zichtbare iconen, tekst en zachte outline, moderne iconen stijl */
 
+/* Root variabele (voor glow orb iconen) */
 :root {
   --glow-orb: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAhGVYSWZNTQAqAAAACAAFARIAAwAAAAEAAQAAARoABQAAAAEAAABKARsABQAAAAEAAABSASgAAwAAAAEAAgAAh2kABAAAAAEAAABaAAAAAAAAAEgAAAABAAAASAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAMqADAAQAAAABAAAAMgAAAACG8cKoAAAACXBIWXMAAAsTAAALEwEAmpwYAAACymlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj43MjwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPHRpZmY6WFJlc29sdXRpb24+NzI8L3RpZmY6WFJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOk9yaWVudGF0aW9uPjE8L3RpZmY6T3JpZW50YXRpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj44MDA8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpDb2xvclNwYWNlPjE8L2V4aWY6Q29sb3JTcGFjZT4KICAgICAgICAgPGV4aWY6UGl4ZWxZRGltZW5zaW9uPjgwMDwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo=");
 }
 
-/* Maak de achtergrond van de tile-lijsten volledig transparant */
+/* Achtergrond volledig transparant voor lijsten en slidepages */
 #app div.tile-list-page,
 #app div.tile-list-page:not(.home-menu-back),
 #app div.slide-page-home.wallpaper-behind div.tile-list-page {
   background: transparent !important;
 }
 
-/* Tiles met volledig transparante achtergrond en zachte outline */
+/* Tiles: transparant met zachte grijze outline, padding en afgeronde hoeken */
 #app div.groove-home-inner-tile {
   background: transparent !important;
   border: 1px solid rgba(200, 200, 200, 0.15);
   box-shadow: none !important;
-  border-radius: 8px;
+  border-radius: 10px;
   color: white;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-  padding: 10px;
+  padding: 16px;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
 }
 
-/* Hover-effect voor duidelijkheid zonder blur */
+/* Hover effect: subtiele lichte achtergrond en iets sterkere border */
 #app div.groove-home-inner-tile:hover {
   background: rgba(255, 255, 255, 0.05) !important;
   border-color: rgba(200, 200, 200, 0.3);
 }
 
-/* Iconen en namen duidelijk zichtbaar, zonder shadow om glas helder te houden */
+/* Iconen: ronde hoeken, subtiele lichte achtergrond en zachte schaduw */
+#app div.groove-home-tile div.groove-app-tile-icon,
+#app div.groove-letter-tile p.groove-app-tile-icon {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.12);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  filter: none !important;
+}
+
+/* Tiles tekst gecentreerd, wit, zonder schaduw */
 #app div.groove-home-tile p.groove-home-tile-title {
-  position: relative;
-  z-index: 3;
+  margin: 0;
   color: white !important;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  user-select: none;
   text-shadow: none;
 }
 
-/* Menu en app-menu transparant met zachte outline */
+/* Menu volledig transparant met zachte outline en padding */
 #app div.groove-app-menu {
   background: transparent !important;
   border: 1px solid rgba(200, 200, 200, 0.15);
+  border-radius: 12px;
   box-shadow: none;
-  border-radius: 8px;
+  padding: 10px 14px;
   color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-/* Zoekveld met transparante achtergrond en subtiele border */
+/* Menu items: transparant, zachte outline, flex gecentreerd */
+#app div.groove-app-menu div.groove-app-menu-entry {
+  background: transparent !important;
+  border-radius: 8px;
+  border: 1px solid rgba(200, 200, 200, 0.15);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover effect menu items */
+#app div.groove-app-menu div.groove-app-menu-entry:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(200, 200, 200, 0.3);
+}
+
+/* Zoekveld: transparant met subtiele border, afgeronde hoeken */
 #app input.app-list-search {
   background: transparent !important;
   border: 1px solid rgba(200, 200, 200, 0.15);
+  border-radius: 6px;
+  padding: 6px 10px;
   color: white !important;
   box-shadow: none !important;
-  border-radius: 5px;
-  padding: 6px 10px;
   transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-/* Zoekveld focus effect: zachte lichte border */
+/* Zoekveld focus effect */
 #app input.app-list-search:focus {
   background: rgba(255, 255, 255, 0.1) !important;
   border-color: rgba(200, 200, 200, 0.4);
-  color: white !important;
   outline: none;
   box-shadow: none !important;
 }
 
-/* Globale tekstkleur */
+/* Globale tekstkleur wit */
 #app, #app * {
   color: white !important;
 }
 
-/* Maak iconen scherp en zichtbaar */
+/* Iconen helder en zonder extra filter */
 #app div.groove-home-tile div.groove-app-tile-icon,
 #app div.groove-letter-tile p.groove-app-tile-icon {
   filter: none !important;

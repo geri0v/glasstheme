@@ -2,19 +2,22 @@
 /* author: [Geri0V] */
 /* Root variabelen voor kleuren en effecten */
 :root {
-  --background-glass: rgba(255, 255, 255, 0.01);
-  --glow-color: rgba(255, 255, 255, 0.9);
-  --blur-strength: 15px;
+  --background-glass-dark: rgba(0, 0, 0, 0.45);
+  --glow-color: rgba(180, 210, 255, 0.8); /* zachte blauwachtige glow */
+  --blur-strength: 20px;
+  --text-color: white;
+  --icon-filter: invert(1) brightness(2) drop-shadow(0 0 8px var(--glow-color));
+  --border-radius: 8px;
 }
 
-/* Aero Glass achtergrond en glow buitenrand */
+/* Glaslook donkere achtergrond met blur en glow */
 #app div.groove-home-inner-tile {
-  border-radius: 10px;
-  background: var(--background-glass) !important;
+  border-radius: var(--border-radius);
+  background: var(--background-glass-dark);
   backdrop-filter: saturate(1.5) blur(var(--blur-strength));
   box-shadow:
     0 0 12px var(--glow-color),
-    inset 0 0 8px rgba(255, 255, 255, 0.05);
+    inset 0 0 10px rgba(180, 210, 255, 0.15);
   position: relative;
   overflow: visible;
   display: flex;
@@ -23,7 +26,7 @@
   justify-content: center;
 }
 
-/* Centraal houden van tile content */
+/* Centraal uitlijnen van tile content */
 #app div.groove-home-tile {
   display: flex !important;
   flex-direction: column !important;
@@ -33,11 +36,11 @@
   text-align: center;
 }
 
-/* Iconen: als img/svg wit maken, invert + brightness */
+/* Iconen wit maken met glow */
 #app div.groove-home-tile p.groove-home-tile-icon,
 #app div.groove-home-tile p.groove-home-tile-icon img,
 #app div.groove-home-tile p.groove-home-tile-icon svg {
-  filter: invert(1) brightness(2) drop-shadow(0 0 8px var(--glow-color));
+  filter: var(--icon-filter);
   margin: 0 0 6px 0;
   max-width: 64px;
   max-height: 64px;
@@ -45,35 +48,35 @@
   display: block;
 }
 
-/* Tekst wit met glow */
+/* Tekst wit met zachte glow */
 #app div.groove-home-tile p.groove-home-tile-title {
-  color: white !important;
+  color: var(--text-color) !important;
   font-weight: 500;
   font-size: 14px;
   margin: 0;
   user-select: none;
   text-shadow:
-    0 0 6px var(--glow-color),
-    0 0 10px var(--glow-color);
+    0 0 5px rgba(180, 210, 255, 0.7),
+    0 0 10px rgba(180, 210, 255, 0.5);
   line-height: 1.2;
 }
 
-/* App menu met glas en glow */
+/* App menu met donker glas en glow */
 #app div.groove-app-menu {
-  background: transparent !important;
+  background: var(--background-glass-dark);
   backdrop-filter: saturate(1.5) blur(var(--blur-strength));
   box-shadow: 0 0 8px var(--glow-color);
-  border-radius: 10px;
-  color: white;
+  border-radius: var(--border-radius);
+  color: var(--text-color);
   padding: 10px 20px;
 }
 
-/* Zoekveld met glas en glow */
+/* Zoekveld met donkere glasachtergrond en glow */
 #app input.app-list-search {
-  background: rgba(255, 255, 255, 0.01) !important;
+  background: rgba(50, 50, 60, 0.6) !important;
   box-shadow: inset 0 0 8px var(--glow-color) !important;
-  color: white;
-  border-radius: 8px;
+  color: var(--text-color);
+  border-radius: var(--border-radius);
   border: none;
   padding: 8px 12px;
   font-size: 14px;
@@ -87,12 +90,47 @@
 #app input.app-list-search:focus {
   box-shadow: inset 0 0 14px var(--glow-color) !important;
   outline: none;
-  color: white;
+  color: var(--text-color);
 }
 
-/* Niet-actieve tegels dimmen */
+/* Niet-actieve tegels dimmen met minder blur en schaduw */
 #app div.groove-home-tile:not(.t_active) div.groove-home-inner-tile {
-  background: rgba(255, 255, 255, 0.005) !important;
+  background: rgba(20, 20, 25, 0.3) !important;
   backdrop-filter: none !important;
   box-shadow: none !important;
+  filter: grayscale(0.8) brightness(0.6);
+  transition: filter 0.3s ease;
+}
+
+/* Subtiele fade animaties uit style.css (optioneel) */
+@keyframes tileListAppTransitionAnim0 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateZ(500px);
+    opacity: 0;
+  }
+}
+
+@keyframes tileListAppTransitionAnim1 {
+  0% {
+    transform: translateZ(-500px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes tileListAppTransitionAnim2 {
+  0% {
+    transform: translateZ(500px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }

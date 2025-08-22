@@ -1,16 +1,19 @@
 /* title: Frutiger Minimal Glass */
 /* author: [Geri0V] */
 
+
 :root {
   --flow-rotate-scale: 0 !important;
   --glow-orb: transparent !important;
   --metro-background: transparent !important;
 }
 
+/* Container padding */
 #app div.tile-list-container {
   padding-bottom: 160px;
 }
 
+/* Background en slider */
 #app #main-home-slider div.slide-page-home.wallpaper-behind {
   background-size: cover !important;
   transition: opacity calc(.5s * var(--animation-duration-scale));
@@ -23,10 +26,12 @@
   opacity: 0;
 }
 
+/* Tiles achtergrond en transparantie */
 #app div.slide-page-home.wallpaper-behind div.groove-home-tile {
   background: transparent !important;
 }
 
+/* Tile list pagina */
 #app div.slide-page-home.wallpaper-behind div.tile-list-page {
   max-width: none;
   mix-blend-mode: normal !important;
@@ -52,11 +57,12 @@
   box-shadow: none !important;
 }
 
+/* Tiles inner styling met minimale glow/blur */
 #app div.groove-home-inner-tile {
   background: transparent !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
-  outline: 1px solid rgba(128, 128, 128, 0.5) !important; /* Dunne grijze outline */
+  backdrop-filter: saturate(1.8) blur(4px) !important; /* subtiele blur voor glas effect */
+  box-shadow: 0 0 12px 1px rgba(255, 255, 255, 0.15) inset !important; /* subtiele glow op inside outline */
+  outline: 1px solid rgba(255, 255, 255, 0.3) !important; /* dunne witte outline met transparantie */
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -65,6 +71,7 @@
   padding: 10px;
 }
 
+/* Iconen in tiles centreren */
 #app div.groove-app-tile-icon,
 #app div.groove-letter-tile p.groove-app-tile-icon {
   margin: 0 auto;
@@ -73,6 +80,7 @@
   max-height: 48px;
 }
 
+/* Tekst onder iconen in tiles */
 #app div.groove-home-tile p.groove-home-tile-title {
   margin-top: 6px;
   text-align: center;
@@ -88,10 +96,13 @@
   align-self: center;
 }
 
+/* Light mode aanpassingen */
 #app.light-mode div.groove-app-menu {
-  backdrop-filter: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
+  backdrop-filter: saturate(1.8) blur(6px) !important; /* minimale glow/blur */
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.15) !important;
+  border-radius: 8px;
+  color: white !important;
 }
 
 #app.light-mode div.tile-list-page {
@@ -104,31 +115,32 @@
 }
 
 #app.light-mode div.slide-page-home.wallpaper-behind div.groove-home-inner-tile {
-  background: transparent !important;
-  outline: 1px solid rgba(128, 128, 128, 0.5) !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
+  backdrop-filter: saturate(1.8) blur(4px) !important;
+  outline: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 0 12px 1px rgba(255, 255, 255, 0.15) inset !important;
 }
 
+/* Menu styling met transparantie en minimale glow/blur */
 #app div.groove-app-menu {
-  position: fixed !important; 
-  top: calc(var(--window-inset-top, 0px)) !important; 
-  right: 10px !important; 
-  left: auto !important; 
-  width: 320px !important; /* Iets breder voor 4 iconen */
-  background: transparent !important; 
-  backdrop-filter: none !important; 
-  box-shadow: none !important; 
-  color: white !important; 
+  position: fixed !important;
+  top: calc(var(--window-inset-top, 0px)) !important;
+  right: 10px !important;
+  left: auto !important;
+  max-width: 320px !important;
+  background: rgba(0, 0, 0, 0.15) !important; /* lichte transparantie */
+  backdrop-filter: saturate(1.8) blur(8px) !important; /* zachte blur/glow */
+  box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.1) !important; /* subtiele glow */
+  color: white !important;
   border-radius: 12px;
   z-index: 9999 !important;
   padding: 12px 16px;
   box-sizing: border-box;
 
   display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important; /* 4 kolommen */
-  grid-auto-rows: minmax(60px, auto) !important; /* genoeg ruimte voor icon + tekst */
-  gap: 10px !important; /* ruimte tussen iconen */
+  grid-template-columns: repeat(4, 1fr) !important; /* 4 iconen per rij */
+  grid-auto-rows: minmax(60px, auto) !important;
+  gap: 10px !important;
+
   justify-items: center !important;
   align-items: start !important;
 }
@@ -137,7 +149,7 @@
   background: transparent !important;
   box-shadow: none !important;
   border-radius: 8px;
-  padding: 4px 6px;
+  padding: 6px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,10 +169,11 @@
 }
 
 #app div.groove-app-menu div.groove-app-menu-entry.t_active {
-  box-shadow: inset 0px 0px 3px 2px rgba(255, 255, 255, 0.35) !important;
+  box-shadow: inset 0 0 3px 2px rgba(255, 255, 255, 0.35) !important;
   background-color: rgba(255, 255, 255, 0.15) !important;
 }
 
+/* Tekst onder iconen in het menu */
 #app div.groove-app-menu div.groove-app-menu-entry p {
   margin: 6px 0 0 0;
   font-size: 11px;
@@ -169,10 +182,10 @@
   text-overflow: ellipsis;
   width: 100%;
   color: white !important;
-  pointer-events: none;  /* tekst is niet klikbaar */
+  pointer-events: none;
 }
 
-/* Optioneel: maak iconen iets groter in menu */
+/* Iconen iets groter in menu */
 #app div.groove-app-menu div.groove-app-menu-entry svg,
 #app div.groove-app-menu div.groove-app-menu-entry img {
   width: 28px !important;
@@ -181,16 +194,18 @@
   pointer-events: none;
 }
 
+/* Zoekveld styling */
 #app input.app-list-search {
   border-radius: 5px;
   background: white !important;
-  box-shadow: inset 0px 0px 0px 2px #c6c6c6, inset 0px 0px 3px 3px #c3c3c3 !important;
+  box-shadow: inset 0 0 0 2px #c6c6c6, inset 0 0 3px 3px #c3c3c3 !important;
 }
 
 #app input.app-list-search:focus {
-  box-shadow: inset 0px 0px 0px 2px #4B88B6, inset 0px 0px 3px 3px #3CD6FD !important;
+  box-shadow: inset 0 0 0 2px #4B88B6, inset 0 0 3px 3px #3CD6FD !important;
 }
 
+/* Tile list inner container */
 #app div.tile-list-inner-container {
   width: calc(100% - 38px - 68px);
   max-width: 662px;
@@ -200,6 +215,7 @@
   width: calc(100% - 38px - 55px);
 }
 
+/* App page icon banner */
 #app div.app-page-icon-banner {
   background: transparent !important;
   top: calc(var(--window-inset-top, 0px));
@@ -211,7 +227,7 @@
   position: absolute;
   left: 100%;
   top: 80px;
-  transform-origin: 0% 0%;
+  transform-origin: 0 0;
   transform: rotate(90deg);
 }
 
@@ -219,6 +235,7 @@
   left: 10px;
 }
 
+/* Icon, search and tile menu button styling */
 #app #app-page-icon,
 #app #search-icon,
 #app div.groove-tile-menu-button {
@@ -241,6 +258,7 @@
   opacity: 0.5 !important;
 }
 
+/* Prevent tile shaking */
 #app div.groove-home-tile {
   --shake-x: 0px !important;
   --shake-y: 0px !important;

@@ -1,16 +1,25 @@
-/* Full Glass Aero Theme zonder blur voor Groove Launcher */
-/* Transparant met zichtbare iconen, tekst en zachte outline, moderne iconen stijl */
+/* title: Frutiger Glass*/
+/* author: Geri0V
 
-/* Root variabele (voor glow orb iconen) */
+/* Root variabelen */
 :root {
   --glow-orb: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAhGVYSWZNTQAqAAAACAAFARIAAwAAAAEAAQAAARoABQAAAAEAAABKARsABQAAAAEAAABSASgAAwAAAAEAAgAAh2kABAAAAAEAAABaAAAAAAAAAEgAAAABAAAASAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAMqADAAQAAAABAAAAMgAAAACG8cKoAAAACXBIWXMAAAsTAAALEwEAmpwYAAACymlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj43MjwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPHRpZmY6WFJlc29sdXRpb24+NzI8L3RpZmY6WFJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOk9yaWVudGF0aW9uPjE8L3RpZmY6T3JpZW50YXRpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj44MDA8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpDb2xvclNwYWNlPjE8L2V4aWY6Q29sb3JTcGFjZT4KICAgICAgICAgPGV4aWY6UGl4ZWxZRGltZW5zaW9uPjgwMDwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo=");
 }
 
-/* Achtergrond volledig transparant voor lijsten en slidepages */
+/* Achtergronden volledig transparant */
 #app div.tile-list-page,
 #app div.tile-list-page:not(.home-menu-back),
 #app div.slide-page-home.wallpaper-behind div.tile-list-page {
   background: transparent !important;
+}
+
+/* Tile container padding en sizing gebaseerd op origineel */
+#app div.tile-list-inner-container {
+  width: calc(100% - 38px - 68px);
+  max-width: 662px;
+}
+#app div.tile-list-inner-container.gs-6 {
+  width: calc(100% - 38px - 55px);
 }
 
 /* Tiles: transparant met zachte grijze outline, padding en afgeronde hoeken */
@@ -28,20 +37,21 @@
   justify-content: center;
   transition: background-color 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
+  margin: 10px 8px; /* spacing tussen tiles */
 }
 
-/* Hover effect: subtiele lichte achtergrond en iets sterkere border */
+/* Hover effect: subtiele lichte achtergrond en sterkere border */
 #app div.groove-home-inner-tile:hover {
   background: rgba(255, 255, 255, 0.05) !important;
   border-color: rgba(200, 200, 200, 0.3);
 }
 
-/* Iconen: ronde hoeken, subtiele lichte achtergrond en zachte schaduw */
+/* Iconen: ronde hoeken, lichte achtergrond en zachte schaduw */
 #app div.groove-home-tile div.groove-app-tile-icon,
 #app div.groove-letter-tile p.groove-app-tile-icon {
   background: rgba(255, 255, 255, 0.1) !important;
   border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.12);
   width: 64px;
   height: 64px;
   display: flex;
@@ -73,6 +83,9 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  width: calc(100% - 20px);
+  left: 10px;
+  position: relative;
 }
 
 /* Menu items: transparant, zachte outline, flex gecentreerd */
@@ -81,6 +94,7 @@
   border-radius: 8px;
   border: 1px solid rgba(200, 200, 200, 0.15);
   padding: 8px 12px;
+  margin: 4px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,4 +139,20 @@
   background: transparent !important;
   box-shadow: none !important;
   border: none !important;
+}
+
+/* Voeg spacing in tile list container zodat de tiles niet overlappen */
+#app div.tile-list-container {
+  padding-bottom: 160px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+/* Zorg dat tile list inner container ruimte vrijmaakt voor de tiles */
+#app div.tile-list-inner-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 12px; /* verticale en horizontale gap */
+  justify-content: center;
 }

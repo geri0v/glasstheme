@@ -1,265 +1,117 @@
 /* title: Frutiger Minimal Glass */
 /* author: [Geri0V] */
-
-
 :root {
-  --flow-rotate-scale: 0 !important;
-  --glow-orb: transparent !important;
-  --metro-background: transparent !important;
+  --flow-rotate-scale: 0;
+  --glow-orb: transparent;
+  --metro-background: transparent;
 }
 
-/* Container padding */
-#app div.tile-list-container {
-  padding-bottom: 160px;
-}
-
-/* Background en slider */
-#app #main-home-slider div.slide-page-home.wallpaper-behind {
-  background-size: cover !important;
-  transition: opacity calc(.5s * var(--animation-duration-scale));
-  background: transparent !important;
-  backdrop-filter: none !important;
-}
-
-#app #main-home-slider.app-transition-on-pause div.slide-page-home.wallpaper-behind {
-  transition: opacity calc(.25s * var(--animation-duration-scale)) calc(.5s * var(--animation-duration-scale));
-  opacity: 0;
-}
-
-/* Tiles achtergrond en transparantie */
-#app div.slide-page-home.wallpaper-behind div.groove-home-tile {
-  background: transparent !important;
-}
-
-/* Tile list pagina */
-#app div.slide-page-home.wallpaper-behind div.tile-list-page {
-  max-width: none;
-  mix-blend-mode: normal !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-
-#app div.slide-page-home.wallpaper-behind div.tile-list-page:not(.home-menu-back) {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0) calc(100% - 90px), transparent 100%) !important;
-  background-size: 100% 100% !important;
-  background-repeat: no-repeat;
-}
-
-#app div.slide-page-home.wallpaper-behind div.tile-list-page.home-menu-back-intro, 
-#app div.slide-page-home.wallpaper-behind div.tile-list-page.home-menu-back {
-  background-size: 120% 100% !important;
-}
-
-#app div.slide-page-home.wallpaper-behind div.tile-list-page.home-menu-back-intro div.groove-home-tile:not(.home-menu-selected) div.groove-home-inner-tile, 
-#app div.slide-page-home.wallpaper-behind div.tile-list-page.home-menu-back div.groove-home-tile:not(.home-menu-selected) div.groove-home-inner-tile {
-  backdrop-filter: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* Tiles inner styling met minimale glow/blur */
+/* ===== Tiles & Home ===== */
 #app div.groove-home-inner-tile {
-  background: transparent !important;
-  backdrop-filter: saturate(1.8) blur(4px) !important; /* subtiele blur voor glas effect */
-  box-shadow: 0 0 12px 1px rgba(255, 255, 255, 0.15) inset !important; /* subtiele glow op inside outline */
-  outline: 1px solid rgba(255, 255, 255, 0.3) !important; /* dunne witte outline met transparantie */
+  background: rgba(255, 255, 255, 0.01); /* 99% transparant */
+  backdrop-filter: saturate(1.8) blur(2px);
+  -webkit-backdrop-filter: saturate(1.8) blur(2px);
+  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.08);
+  outline: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 5px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10px;
+  transition: backdrop-filter 0.2s ease;
 }
 
-/* Iconen in tiles centreren */
 #app div.groove-app-tile-icon,
 #app div.groove-letter-tile p.groove-app-tile-icon {
   margin: 0 auto;
-  display: block;
   max-width: 48px;
   max-height: 48px;
 }
 
-/* Tekst onder iconen in tiles */
 #app div.groove-home-tile p.groove-home-tile-title {
   margin-top: 6px;
   text-align: center;
-  color: white !important;
-  box-shadow: none !important;
-  width: 100%;
-  order: 2;
+  color: white;
   font-weight: 500;
   font-size: 14px;
 }
 
-#app div.groove-home-inner-tile > * {
-  align-self: center;
-}
-
-/* Light mode aanpassingen */
-#app.light-mode div.groove-app-menu {
-  backdrop-filter: saturate(1.8) blur(6px) !important; /* minimale glow/blur */
-  background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 0 15px 3px rgba(255, 255, 255, 0.15) !important;
-  border-radius: 8px;
-  color: white !important;
-}
-
-#app.light-mode div.tile-list-page {
-  mix-blend-mode: normal !important;
-  background: transparent !important;
-}
-
-#app.light-mode div.tile-list-page:not(.home-menu-back) {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0) calc(100% - 90px), transparent 100%) !important;
-}
-
-#app.light-mode div.slide-page-home.wallpaper-behind div.groove-home-inner-tile {
-  backdrop-filter: saturate(1.8) blur(4px) !important;
-  outline: 1px solid rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 0 12px 1px rgba(255, 255, 255, 0.15) inset !important;
-}
-
-/* Menu styling met transparantie en minimale glow/blur */
+/* ===== Menu Styling ===== */
 #app div.groove-app-menu {
-  position: fixed !important;
-  top: calc(var(--window-inset-top, 0px)) !important;
-  right: 10px !important;
-  left: auto !important;
-  max-width: 320px !important;
-  background: rgba(0, 0, 0, 0.15) !important; /* lichte transparantie */
-  backdrop-filter: saturate(1.8) blur(8px) !important; /* zachte blur/glow */
-  box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.1) !important; /* subtiele glow */
-  color: white !important;
+  position: fixed;
+  top: calc(var(--window-inset-top, 0px));
+  right: 20px;
+  left: auto;
+  max-width: 320px;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: saturate(1.8) blur(2px);
+  -webkit-backdrop-filter: saturate(1.8) blur(2px);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
   border-radius: 12px;
-  z-index: 9999 !important;
+  color: white;
+  z-index: 9999;
   padding: 12px 16px;
-  box-sizing: border-box;
-
-  display: grid !important;
-  grid-template-columns: repeat(4, 1fr) !important; /* 4 iconen per rij */
-  grid-auto-rows: minmax(60px, auto) !important;
-  gap: 10px !important;
-
-  justify-items: center !important;
-  align-items: start !important;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(60px, auto);
+  gap: 10px;
+  justify-items: center;
 }
 
+/* Hover & Active States */
 #app div.groove-app-menu div.groove-app-menu-entry {
-  background: transparent !important;
-  box-shadow: none !important;
+  background: transparent;
   border-radius: 8px;
   padding: 6px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   cursor: pointer;
-  user-select: none;
   transition: background-color 0.2s ease;
-  text-align: center;
-  color: white !important;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.2;
 }
 
 #app div.groove-app-menu div.groove-app-menu-entry:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 #app div.groove-app-menu div.groove-app-menu-entry.t_active {
-  box-shadow: inset 0 0 3px 2px rgba(255, 255, 255, 0.35) !important;
-  background-color: rgba(255, 255, 255, 0.15) !important;
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.2);
 }
 
-/* Tekst onder iconen in het menu */
+/* Menu Tekst */
 #app div.groove-app-menu div.groove-app-menu-entry p {
   margin: 6px 0 0 0;
   font-size: 11px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-  color: white !important;
-  pointer-events: none;
+  color: inherit;
 }
 
-/* Iconen iets groter in menu */
+/* Iconen in Menu */
 #app div.groove-app-menu div.groove-app-menu-entry svg,
 #app div.groove-app-menu div.groove-app-menu-entry img {
-  width: 28px !important;
-  height: 28px !important;
-  display: block;
-  pointer-events: none;
+  width: 28px;
+  height: 28px;
 }
 
-/* Zoekveld styling */
+/* ===== Light Mode ===== */
+#app.light-mode div.groove-home-inner-tile {
+  background: rgba(255, 255, 255, 0.02);
+  outline: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.05);
+}
+
+#app.light-mode div.groove-app-menu {
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  color: black;
+}
+
+/* ===== Zoeken ===== */
 #app input.app-list-search {
   border-radius: 5px;
-  background: white !important;
-  box-shadow: inset 0 0 0 2px #c6c6c6, inset 0 0 3px 3px #c3c3c3 !important;
+  background: white;
+  box-shadow: inset 0 0 0 2px #c6c6c6, inset 0 0 3px 3px #c3c3c3;
 }
 
 #app input.app-list-search:focus {
-  box-shadow: inset 0 0 0 2px #4B88B6, inset 0 0 3px 3px #3CD6FD !important;
-}
-
-/* Tile list inner container */
-#app div.tile-list-inner-container {
-  width: calc(100% - 38px - 68px);
-  max-width: 662px;
-}
-
-#app div.tile-list-inner-container.gs-6 {
-  width: calc(100% - 38px - 55px);
-}
-
-/* App page icon banner */
-#app div.app-page-icon-banner {
-  background: transparent !important;
-  top: calc(var(--window-inset-top, 0px));
-  position: fixed;
-  pointer-events: none !important;
-}
-
-#app div.app-page-icon-banner div.update-banner {
-  position: absolute;
-  left: 100%;
-  top: 80px;
-  transform-origin: 0 0;
-  transform: rotate(90deg);
-}
-
-#app div.app-page-icon-banner div.update-banner::after {
-  left: 10px;
-}
-
-/* Icon, search and tile menu button styling */
-#app #app-page-icon,
-#app #search-icon,
-#app div.groove-tile-menu-button {
-  pointer-events: all;
-  background: transparent !important;
-  background-size: 100% 100%;
-  box-shadow: none !important;
-  filter: none !important;
-}
-
-#app #app-page-icon.t_active,
-#app #search-icon.t_active,
-#app div.groove-tile-menu-button.t_active {
-  filter: brightness(1.5) !important;
-}
-
-#app #app-page-icon::before,
-#app #search-icon::before,
-#app div.groove-tile-menu-button::before {
-  opacity: 0.5 !important;
-}
-
-/* Prevent tile shaking */
-#app div.groove-home-tile {
-  --shake-x: 0px !important;
-  --shake-y: 0px !important;
-}
+  box-shadow: inset 0 0 0 2px #4B88B6, inset 0 0 3px 3px #3CD6FD;

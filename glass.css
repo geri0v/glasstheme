@@ -1,141 +1,98 @@
 /* title: Frutiger Minimal Glass */
 /* author: [Geri0V] */
-
 :root {
-  --flow-rotate-scale: 0;
-  --glow-orb: transparent;
-  --metro-background: transparent;
-
-  --aero-blur: 2px;
-  --aero-sat: 0.85;
-  --aero-bright: 1.0;
-  --aero-contrast: 0.98;
-
-  --aero-overlay-dark: rgba(255, 255, 255, 0.02);
-  --aero-overlay-light: rgba(255, 255, 255, 0.03);
+  /* Aero Glass 99% transparantie kleuren en instellingen */
+  --background-glass: rgba(255, 255, 255, 0.01);
+  --icon-glow-color: rgba(0, 150, 255, 0.7);
+  --text-color: rgba(255, 255, 255, 0.85);
+  --blur-strength: 15px;
+  --flow-rotate-scale: 0 !important;
+  --glow-orb: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAhGVYSWZNTQAqAAAACAAFARIAAwAAAAEAAQAAARoABQAAAAEAAABKARsABQAAAAEAAABSASgAAwAAAAEAAgAAh2kABAAAAAEAAABaAAAAAAAAAEgAAAABAAAASAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAMqADAAQAAAABAAAAMgAAAACG8cKoAAAACXBIWXMAAAsTAAALEwEAmpwYAAACymlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj43MjwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPHRpZmY6WFJlc29sdXRpb24+NzI8L3RpZmY6WFJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOk9yaWVudGF0aW9uPjE8L3RpZmY6T3JpZW50YXRpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj44MDA8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpDb2xvclNwYWNlPjE8L2V4aWY6Q29sb3JTcGFjZT4KICAgICAgICAgPGV4aWY6UGl4ZWxZRGltZW5zaW9uPjgwMDwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo=");
 }
 
-/* ===== Tiles ===== */
+/* Algemeen Aero Glass effect voor inner tiles */
 #app div.groove-home-inner-tile {
-  background: var(--aero-overlay-dark);
-  backdrop-filter: saturate(var(--aero-sat)) brightness(var(--aero-bright)) contrast(var(--aero-contrast)) blur(var(--aero-blur));
-  -webkit-backdrop-filter: saturate(var(--aero-sat)) brightness(var(--aero-bright)) contrast(var(--aero-contrast)) blur(var(--aero-blur));
-  outline: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.08);
-  border-radius: 5px;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 10px;
+  background: var(--background-glass) !important;
+  backdrop-filter: saturate(1.5) blur(var(--blur-strength));
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
   position: relative;
-}
-#app div.groove-home-inner-tile::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0) 100%);
-}
-#app div.groove-home-tile p.groove-home-tile-title {
-  margin-top: 6px;
-  text-align: center;
-  color: #FFFFFF;
-  font-weight: 500;
-  font-size: 14px;
+  overflow: visible;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-/* ===== Menu ===== */
-#app div.groove-app-menu {
-  position: fixed;
-  top: calc(var(--window-inset-top, 0px));
-  right: 20px;
-  max-width: 320px;
-  padding: 12px 16px;
-  border-radius: 12px;
-  z-index: 9999;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(60px, auto);
-  gap: 10px;
-  justify-items: center;
-
-  background: var(--aero-overlay-dark);
-  backdrop-filter: saturate(var(--aero-sat)) brightness(var(--aero-bright)) contrast(var(--aero-contrast)) blur(var(--aero-blur));
-  -webkit-backdrop-filter: saturate(var(--aero-sat)) brightness(var(--aero-bright)) contrast(var(--aero-contrast)) blur(var(--aero-blur));
-  outline: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.06);
-  position: relative;
-}
-#app div.groove-app-menu::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0) 100%);
-}
-#app div.groove-app-menu div.groove-app-menu-entry {
-  background: transparent;
-  border-radius: 8px;
-  padding: 6px 8px;
+/* Centraal uitlijnen van iconen met tekst eronder */
+#app div.groove-home-tile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  cursor: pointer;
+  justify-content: center;
+  gap: 6px; /* ruimte tussen icon en tekst */
+  padding: 8px 0;
+}
+
+/* Glow-effect op iconen */
+#app div.groove-home-tile p.groove-home-tile-icon {
+  filter: drop-shadow(0 0 8px var(--icon-glow-color));
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
   user-select: none;
-  transition: background-color 0.2s ease;
-  text-align: center;
-  color: #FFFFFF;
-}
-#app div.groove-app-menu div.groove-app-menu-entry:hover {
-  background-color: rgba(255, 255, 255, 0.06);
-}
-#app div.groove-app-menu div.groove-app-menu-entry.t_active {
-  background-color: rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.2);
-}
-#app div.groove-app-menu div.groove-app-menu-entry p {
-  margin-top: 6px;
-  font-size: 11px;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-}
-#app div.groove-app-menu div.groove-app-menu-entry svg,
-#app div.groove-app-menu div.groove-app-menu-entry img {
-  width: 28px;
-  height: 28px;
-  fill: currentColor;
-  stroke: currentColor;
-  filter: none;
 }
 
-/* ===== Zoekveld ===== */
+/* Tekst onder iconen, gecentreerd */
+#app div.groove-home-tile p.groove-home-tile-title {
+  text-align: center;
+  font-weight: 500;
+  color: var(--text-color);
+  font-size: 14px;
+  margin: 0;
+  user-select: none;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Transparante en glass-effect voor app menu */
+#app div.groove-app-menu {
+  background: transparent !important;
+  backdrop-filter: saturate(1.5) blur(var(--blur-strength));
+  box-shadow: 0 0 8px var(--icon-glow-color);
+  border-radius: 10px;
+  color: var(--text-color);
+  padding: 10px 20px;
+}
+
+/* Zoekveld transparant en glow-compatible */
 #app input.app-list-search {
-  border-radius: 5px;
-  background: white;
-  color: #0A0A0A;
-  box-shadow: inset 0 0 0 2px #c6c6c6, inset 0 0 3px 3px #c3c3c3;
-}
-#app input.app-list-search:focus {
-  box-shadow: inset 0 0 0 2px #4B88B6, inset 0 0 3px 3px #3CD6FD;
+  background: rgba(255, 255, 255, 0.01) !important;
+  box-shadow: inset 0 0 8px var(--icon-glow-color) !important;
+  color: var(--text-color);
+  border-radius: 8px;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  transition: box-shadow 0.3s ease;
 }
 
-/* ===== Light mode ===== */
-#app.light-mode div.groove-home-inner-tile,
-#app.light-mode div.groove-app-menu {
-  background: var(--aero-overlay-light);
-  outline: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.05);
-  color: #0A0A0A;
+#app input.app-list-search::placeholder {
+  color: rgba(255, 255, 255, 0.3);
 }
-#app.light-mode div.groove-app-menu div.groove-app-menu-entry,
-#app.light-mode div.groove-home-tile p.groove-home-tile-title {
-  color: #0A0A0A;
+
+/* Hover en focus states */
+#app input.app-list-search:focus {
+  box-shadow: inset 0 0 12px var(--icon-glow-color) !important;
+  outline: none;
+  color: white;
 }
-#app.light-mode div.groove-home-inner-tile::after,
-#app.light-mode div.groove-app-menu::after {
-  background: linear-gradient(to bottom, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.07) 40%, rgba(255,255,255,0) 100%);
+
+/* Suppress blur en glow op niet-actieve tiles */
+#app div.groove-home-tile:not(.t_active) div.groove-home-inner-tile {
+  background: rgba(255, 255, 255, 0.005) !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+/* Animaties (optioneel) */
+@keyframes fadeInGlass {
+  from {opacity: 0;}
+  to {opacity: 0.99;}
 }

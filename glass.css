@@ -3,83 +3,27 @@
 /* Root variabelen voor kleuren en effecten */
 :root {
   --background-glass: rgba(255, 255, 255, 0.01);
-  --glow-color: rgba(255, 255, 255, 0.8);
+  --glow-color: rgba(255, 255, 255, 0.9);
   --blur-strength: 15px;
-  --flow-rotate-scale: 0 !important;
-  --glow-orb: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAhGVYSWZNTQAqAAAACAAFARIAAwAAAAEAAQAAARoABQAAAAEAAABKARsABQAAAAEAAABSASgAAwAAAAEAAgAAh2kABAAAAAEAAABaAAAAAAAAAEgAAAABAAAASAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAMqADAAQAAAABAAAAMgAAAACG8cKoAAAACXBIWXMAAAsTAAALEwEAmpwYAAACymlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj43MjwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPHRpZmY6WFJlc29sdXRpb24+NzI8L3RpZmY6WFJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOk9yaWVudGF0aW9uPjE8L3RpZmY6T3JpZW50YXRpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj44MDA8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpDb2xvclNwYWNlPjE8L2V4aWY6Q29sb3JTcGFjZT4KICAgICAgICAgPGV4aWY6UGl4ZWxZRGltZW5zaW9uPjgwMDwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo=");
 }
 
-/* Standaard styling voor tile-list-container */
-#app div.tile-list-container {
-  padding-bottom: 160px;
-}
-
-/* Main home slider achtergrond en overgang */
-#app #main-home-slider div.slide-page-home.wallpaper-behind {
-  background-size: cover !important;
-  transition: opacity calc(.5s * var(--animation-duration-scale));
-}
-
-#app #main-home-slider.app-transition-on-pause div.slide-page-home.wallpaper-behind {
-  transition: opacity calc(.25s * var(--animation-duration-scale)) calc(.5s * var(--animation-duration-scale));
-  opacity: 0;
-}
-
-/* Transparante achtergrond voor groove tiles binnen wallpaper */
-#app div.slide-page-home.wallpaper-behind div.groove-home-tile {
-  background: transparent !important;
-}
-
-/* Transparante tile list pagina met overlay */
-#app div.slide-page-home.wallpaper-behind div.tile-list-page {
-  max-width: none;
-  mix-blend-mode: normal !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-
-/* Subtiele fade gradient aan rechterkant */
-#app div.slide-page-home.wallpaper-behind div.tile-list-page:not(.home-menu-back) {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0) calc(100% - 90px), var(--metro-background) 100%) !important;
-  background-size: 100% 100% !important;
-  background-repeat: no-repeat;
-}
-
-/* Grotere achtergrond voor home-menu-back pagina's */
-#app div.slide-page-home.wallpaper-behind div.tile-list-page.home-menu-back-intro, 
-#app div.slide-page-home.wallpaper-behind div.tile-list-page.home-menu-back {
-  background-size: 120% 100% !important;
-}
-
-/* Geen blur filter voor niet-geselecteerde home-menu tegels */
-#app div.slide-page-home.wallpaper-behind div.tile-list-page.home-menu-back-intro div.groove-home-tile:not(.home-menu-selected) div.groove-home-inner-tile, 
-#app div.slide-page-home.wallpaper-behind div.tile-list-page.home-menu-back div.groove-home-tile:not(.home-menu-selected) div.groove-home-inner-tile {
-  backdrop-filter: none;
-}
-
-/* Transparantie en achtergrond voor actieve tegels */
-#app div.slide-page-home.wallpaper-behind div.groove-home-tile.t_active div.groove-home-inner-tile {
-  background: rgba(50, 50, 50, 0.5) !important;
-}
-
-/* Aero Glass effect en glow buitenrand voor inner tile met centrering */
+/* Aero Glass achtergrond en glow buitenrand */
 #app div.groove-home-inner-tile {
   border-radius: 10px;
   background: var(--background-glass) !important;
   backdrop-filter: saturate(1.5) blur(var(--blur-strength));
   box-shadow:
-    0 0 10px var(--glow-color),
+    0 0 12px var(--glow-color),
     inset 0 0 8px rgba(255, 255, 255, 0.05);
   position: relative;
   overflow: visible;
-  transition: background 0.3s ease, backdrop-filter 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-/* Tile container centraal met originele flex gedrag behouden */
+/* Centraal houden van tile content */
 #app div.groove-home-tile {
   display: flex !important;
   flex-direction: column !important;
@@ -89,21 +33,19 @@
   text-align: center;
 }
 
-/* Icon styling met witte glow en lichte outline */
-#app div.groove-home-tile p.groove-home-tile-icon {
-  filter:
-    drop-shadow(0 0 6px var(--glow-color)) 
-    drop-shadow(0 0 4px var(--glow-color));
+/* Iconen: als img/svg wit maken, invert + brightness */
+#app div.groove-home-tile p.groove-home-tile-icon,
+#app div.groove-home-tile p.groove-home-tile-icon img,
+#app div.groove-home-tile p.groove-home-tile-icon svg {
+  filter: invert(1) brightness(2) drop-shadow(0 0 8px var(--glow-color));
   margin: 0 0 6px 0;
-  user-select: none;
-  color: white !important;
-  width: auto;
-  height: auto;
   max-width: 64px;
   max-height: 64px;
+  user-select: none;
+  display: block;
 }
 
-/* Tekst wit met glow, origineel font en gewicht behouden */
+/* Tekst wit met glow */
 #app div.groove-home-tile p.groove-home-tile-title {
   color: white !important;
   font-weight: 500;
@@ -116,7 +58,7 @@
   line-height: 1.2;
 }
 
-/* App menu transparant met blur en glow */
+/* App menu met glas en glow */
 #app div.groove-app-menu {
   background: transparent !important;
   backdrop-filter: saturate(1.5) blur(var(--blur-strength));
@@ -126,7 +68,7 @@
   padding: 10px 20px;
 }
 
-/* Zoekveld met Aero Glass uitstraling en glow */
+/* Zoekveld met glas en glow */
 #app input.app-list-search {
   background: rgba(255, 255, 255, 0.01) !important;
   box-shadow: inset 0 0 8px var(--glow-color) !important;
@@ -148,48 +90,9 @@
   color: white;
 }
 
-/* Niet-actieve tegels minder zichtbaar */
+/* Niet-actieve tegels dimmen */
 #app div.groove-home-tile:not(.t_active) div.groove-home-inner-tile {
   background: rgba(255, 255, 255, 0.005) !important;
   backdrop-filter: none !important;
   box-shadow: none !important;
-}
-
-/* Overige originele animatie keyframes (optioneel behouden) */
-@keyframes tileListAppTransitionAnim0 {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateZ(500px);
-    opacity: 0;
-  }
-}
-@keyframes tileListAppTransitionAnim1 {
-  0% {
-    transform: translateZ(-500px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes tileListAppTransitionAnim2 {
-  0% {
-    transform: translateZ(500px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes innerTileListAppTransitionAnim0 {
-  0% {
-    transform: none;
-  }
-  100% {
-    transform: none;
-  }
 }
